@@ -236,10 +236,10 @@ function StoreHeader() {
                         ) : (
                             <>
                                 <Link className="btn btn-primary me-2 mt-2 mt-lg-0" to="/login">
-                                    Login
+                                    <i className="fas fa-sign-in-alt me-2"></i> Login
                                 </Link>
                                 <Link className="btn btn-primary me-2 mt-2 mt-lg-0" to="/register">
-                                    Register
+                                    <i className="fas fa-user-plus me-2"></i> Register
                                 </Link>
                             </>
                         )}
