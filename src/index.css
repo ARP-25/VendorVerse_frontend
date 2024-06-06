@@ -10,8 +10,32 @@ ul.nav li:hover {
   color: #ffffff;
   border-radius:5px;
 }
+.category:hover {
+  background-color: #60ACE6;
+  color: #ffffff;
+  border-radius:5px;
+  cursor:pointer;
+  box-shadow: 0 0 11px #60ACE6; 
+  transition: ease-in-out 0.1s;
+}
+.card:hover {
+  box-shadow: 0 0 11px #60ACE6; 
+  transition: ease-in-out 0.1s;
+}
+.nav-item-2 {
+  margin: 0 5px;
+}
 
+.nav-pills:hover .nav-link:hover {
+  background-color: #4582ec!important;
+  color: #fff!important;
+  /* border-radius: 1em!important; */
+ 
+}
 
+/* .nav-pills .nav-link {
+  border-radius: 1em!important;
+} */
 
 
 .text-danger strong {

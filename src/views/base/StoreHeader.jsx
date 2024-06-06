@@ -1,6 +1,6 @@
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/auths";
-import { useState, useContext } from "react";
 import { CartContext } from "../plugin/Context";
 import UserData from "../plugin/UserData";
 
@@ -10,6 +10,32 @@ function StoreHeader() {
     const userDataDecoded = UserData();
 
     const [search, setSearch] = useState("");
+    const texts = ["Search for a Product", "Search for a Category", "Search for a Description"];
+    const [placeholder, setPlaceholder] = useState("");
+    const [textIndex, setTextIndex] = useState(0);
+    const [charIndex, setCharIndex] = useState(0);
+    const [showCursor, setShowCursor] = useState(true);
+
+    useEffect(() => {
+        if (charIndex < texts[textIndex].length) {
+            const typeInterval = setInterval(() => {
+                setPlaceholder((prev) => prev + texts[textIndex][charIndex]);
+                setCharIndex((prev) => prev + 1);
+            }, 150);
+            return () => clearInterval(typeInterval);
+        } else {
+            const completeInterval = setTimeout(() => {
+                setShowCursor(false);
+                setTimeout(() => {
+                    setShowCursor(true);
+                    setPlaceholder("");
+                    setTextIndex((prev) => (prev + 1) % texts.length);
+                    setCharIndex(0);
+                }, 500);
+            }, 2000);
+            return () => clearTimeout(completeInterval);
+        }
+    }, [charIndex, textIndex, texts]);
 
     const handleSearchChange = (event) => {
         setSearch(event.target.value);
@@ -23,8 +49,6 @@ function StoreHeader() {
     };
 
     const cartCount = useContext(CartContext);
-    console.log("user", user);
-    console.log("userDataDecoded", userDataDecoded);
 
     return (
         <div>
@@ -52,52 +76,6 @@ function StoreHeader() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         {/* Pages / Account / Vendor */}
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {/* Pages */}
-                            {/* <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    Pages
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            About Us
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Contact Us
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Blog
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Changelog
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Terms & Condition
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Cookie Policy
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li> */}
-
                             {/* Account */}
                             <li className="nav-item dropdown">
                                 <a
@@ -207,13 +185,13 @@ function StoreHeader() {
                         </ul>
 
                         {/* Search Input and Button */}
-                        <form className="d-flex pe-5  w-50" onSubmit={handleSearchSubmit}>
+                        <form className="d-flex px-4 w-50" onSubmit={handleSearchSubmit}>
                             <input
                                 onChange={handleSearchChange}
                                 name="search"
-                                className="form-control me-2 min-w-100"
+                                className="form-control me-2 min-w-100 rounded-pill"
                                 type="text"
-                                placeholder="Search"
+                                placeholder={`${placeholder}${showCursor ? "_" : ""}`}
                                 aria-label="Search"
                             />
                             <button className="btn btn-outline-success me-2" type="submit">

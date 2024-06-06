@@ -166,6 +166,7 @@ function ProductDetail() {
         }
     };
 
+    console.log("Review Data", reviews);
     return (
         <main className="mb-4 mt-4">
             <div className="container">
@@ -416,10 +417,10 @@ function ProductDetail() {
                 <hr />
 
                 {/* Tab List START */}
-                <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li className="nav-item" role="presentation">
+                <ul className="nav nav-pills mb-3 mx-1" id="pills-tab" role="tablist">
+                    <li className="nav-item nav-item-2" role="presentation">
                         <button
-                            className="nav-link active"
+                            className="btn btn-primary nav-link active"
                             id="pills-home-tab"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-home"
@@ -431,7 +432,7 @@ function ProductDetail() {
                             Specifications
                         </button>
                     </li>
-                    <li className="nav-item" role="presentation">
+                    <li className="nav-item nav-item-2" role="presentation">
                         <button
                             className="nav-link"
                             id="pills-profile-tab"
@@ -445,7 +446,7 @@ function ProductDetail() {
                             Vendor
                         </button>
                     </li>
-                    <li className="nav-item" role="presentation">
+                    <li className="nav-item nav-item-2" role="presentation">
                         <button
                             className="nav-link"
                             id="pills-contact-tab"
@@ -606,7 +607,7 @@ function ProductDetail() {
                                                         {[...Array(r.rating)].map((_, index) => (
                                                             <i
                                                                 key={index}
-                                                                className="fa fa-star"
+                                                                className="fa fa-star text-warning"
                                                             ></i>
                                                         ))}
                                                     </div>

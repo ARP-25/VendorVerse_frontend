@@ -107,14 +107,22 @@ function Product() {
 
     const addToWishlist = async (productId, userId) => {
         try {
-            const formdata = new FormData();
-            formdata.append("product_id", productId);
-            formdata.append("user_id", userId);
-            const response = await apiInstance.post(`customer/wishlist/${userId}/`, formdata);
-            Toast.fire({
-                icon: "success",
-                title: response.data.message,
-            });
+            if (!userId) {
+                Toast.fire({
+                    icon: "info",
+                    title: "You need to login first",
+                });
+                return;
+            } else {
+                const formdata = new FormData();
+                formdata.append("product_id", productId);
+                formdata.append("user_id", userId);
+                const response = await apiInstance.post(`customer/wishlist/${userId}/`, formdata);
+                Toast.fire({
+                    icon: "success",
+                    title: response.data.message,
+                });
+            }
         } catch (error) {
             console.log(error);
         }
@@ -132,8 +140,18 @@ function Product() {
         <>
             <div>
                 {/*Main layout*/}
-                <main className="mt-4">
-                    <div className="container">
+                <main className="">
+                    <section>
+                        <div className="">
+                            <img
+                                src="https://plus.unsplash.com/premium_photo-1681487933632-c9eda34fcaf1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt=""
+                                className="w-100"
+                                style={{ height: "50vh", objectFit: "cover" }}
+                            />
+                        </div>
+                    </section>
+                    <div className="container mt-4">
                         <section className="text-center">
                             {/* Categories START*/}
                             {isLoadingCategories && (
@@ -147,7 +165,7 @@ function Product() {
                                     {categories?.map((c, index) => (
                                         <div
                                             key={c.id}
-                                            className="col-6 col-md-4 col-lg-2"
+                                            className="category col-6 col-md-4 col-lg-2 pt-2"
                                             onClick={() => filterCategory(c.title)}
                                         >
                                             <img
@@ -400,8 +418,7 @@ function Product() {
                                 <div className="col-lg-6 col-md-8 mx-auto">
                                     <h1 className="fw-light">Trending Products</h1>
                                     <p className="lead text-muted">
-                                        Something short and leading about the collection below—its
-                                        contents
+                                        Check out most trending products in our store
                                     </p>
                                 </div>
                             </div>

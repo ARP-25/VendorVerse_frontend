@@ -17,7 +17,7 @@ const Toast = Swal.mixin({
 function Search() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
-
+    const [productsLoading, setProductsLoading] = useState(true);
     const [selectedQuantity, setSelectedQuantity] = useState({});
     const [selectedColors, setSelectedColors] = useState({});
     const [selectedSizes, setSelectedSizes] = useState({});
@@ -26,8 +26,10 @@ function Search() {
     const query = searchParams.get("query");
 
     const fetchProducts = async () => {
-        const response = await apiInstance.get(`/search/?query=${query}`);
-        setProducts(response.data);
+        await apiInstance.get(`/search/?query=${query}`).then((response) => {
+            setProducts(response.data);
+            setProductsLoading(false);
+        });
     };
 
     useEffect(() => {
@@ -89,181 +91,201 @@ function Search() {
                 <div className="container">
                     <section className="text-center">
                         {/* Products START */}
-                        <div className="row">
-                            {products?.map((p, index) => (
-                                <div key={p.id} className="col-lg-4 col-md-12 mb-4">
-                                    <div className="card">
-                                        <div
-                                            className="bg-image hover-zoom ripple"
-                                            data-mdb-ripple-color="light"
-                                        >
-                                            <Link to={`/detail/${p.slug}`}>
-                                                <img
-                                                    src={p.image}
-                                                    className="w-100"
-                                                    style={{
-                                                        width: "100%",
-                                                        height: "250px",
-                                                        objectFit: "cover",
-                                                    }}
-                                                />
-                                            </Link>
-                                        </div>
-                                        <div className="card-body">
-                                            <Link to={`/detail/${p.slug}`} className="text-reset">
-                                                <h5 className="card-title mb-3">{p.title}</h5>
-                                            </Link>
-
-                                            <Link to={`/detail/${p.slug}`}>
-                                                <p>{p.category?.title}</p>
-                                            </Link>
-                                            <div className="d-flex justify-content-center">
-                                                <h6 className="mb-3">${p.price}</h6>
-                                                <h6 className="mb-3 text-muted ms-2">
-                                                    <strike>${p.old_price}</strike>
-                                                </h6>
+                        {productsLoading && (
+                            <h5 className="mt-5 text-center text-info">
+                                Loading {query} Products ...{" "}
+                                <i className="fas fa-spinner fa-spin loading-icon"></i>
+                            </h5>
+                        )}
+                        {!productsLoading && (
+                            <div className="row">
+                                {products?.map((p, index) => (
+                                    <div key={p.id} className="col-lg-4 col-md-12 mb-4">
+                                        <div className="card">
+                                            <div
+                                                className="bg-image hover-zoom ripple"
+                                                data-mdb-ripple-color="light"
+                                            >
+                                                <Link to={`/detail/${p.slug}`}>
+                                                    <img
+                                                        src={p.image}
+                                                        className="w-100"
+                                                        style={{
+                                                            width: "100%",
+                                                            height: "250px",
+                                                            objectFit: "cover",
+                                                        }}
+                                                    />
+                                                </Link>
                                             </div>
-
-                                            {/* Variation and Heart START */}
-                                            <div className="btn-group">
-                                                <button
-                                                    className="btn btn-primary dropdown-toggle"
-                                                    type="button"
-                                                    id="dropdownMenuClickable"
-                                                    data-bs-toggle="dropdown"
-                                                    data-bs-auto-close="false"
-                                                    aria-expanded="false"
+                                            <div className="card-body">
+                                                <Link
+                                                    to={`/detail/${p.slug}`}
+                                                    className="text-reset"
                                                 >
-                                                    Variation
-                                                </button>
-                                                <ul
-                                                    className="dropdown-menu"
-                                                    aria-labelledby="dropdownMenuClickable"
-                                                >
-                                                    {/*  Product Quantity START */}
-                                                    <div className="d-flex flex-column">
-                                                        <li className="p-1">
-                                                            <b className="pe-1">Quantity:</b>
-                                                            {}
-                                                        </li>
-                                                        <div className="p-1 mt-0 pt-0 d-flex flex-wrap">
-                                                            <li key={index}>
-                                                                <input
-                                                                    className="form-control"
-                                                                    type="number"
-                                                                    min="1"
-                                                                    value={
-                                                                        selectedQuantity[p.id] || 1
-                                                                    } // This ensures the input displays the current quantity from the state
-                                                                    onChange={(e) =>
-                                                                        handleQuantityChange(
-                                                                            e,
-                                                                            p.id
-                                                                        )
-                                                                    }
-                                                                />
-                                                            </li>
-                                                        </div>
-                                                    </div>
-                                                    {/*  Product Quantity END */}
+                                                    <h5 className="card-title mb-3">{p.title}</h5>
+                                                </Link>
 
-                                                    {/* Product Sizes START */}
-                                                    {p.size?.length > 0 && (
+                                                <Link to={`/detail/${p.slug}`}>
+                                                    <p>{p.category?.title}</p>
+                                                </Link>
+                                                <div className="d-flex justify-content-center">
+                                                    <h6 className="mb-3">${p.price}</h6>
+                                                    <h6 className="mb-3 text-muted ms-2">
+                                                        <strike>${p.old_price}</strike>
+                                                    </h6>
+                                                </div>
+
+                                                {/* Variation and Heart START */}
+                                                <div className="btn-group">
+                                                    <button
+                                                        className="btn btn-primary dropdown-toggle"
+                                                        type="button"
+                                                        id="dropdownMenuClickable"
+                                                        data-bs-toggle="dropdown"
+                                                        data-bs-auto-close="false"
+                                                        aria-expanded="false"
+                                                    >
+                                                        Variation
+                                                    </button>
+                                                    <ul
+                                                        className="dropdown-menu"
+                                                        aria-labelledby="dropdownMenuClickable"
+                                                    >
+                                                        {/*  Product Quantity START */}
                                                         <div className="d-flex flex-column">
                                                             <li className="p-1">
-                                                                <b className="pe-1">Size:</b>
-                                                                {selectedSizes[p.id] || "No Size"}
+                                                                <b className="pe-1">Quantity:</b>
+                                                                {}
                                                             </li>
                                                             <div className="p-1 mt-0 pt-0 d-flex flex-wrap">
-                                                                {p.size?.map((size, index) => (
-                                                                    <li key={index}>
-                                                                        <button
-                                                                            onClick={(e) =>
-                                                                                handleSizeButtonClick(
-                                                                                    e,
-                                                                                    p.id,
-                                                                                    size.name
-                                                                                )
-                                                                            }
-                                                                            className="btn btn-secondary btn-sm me-2 mb-1"
-                                                                        >
-                                                                            {size.name}
-                                                                        </button>
-                                                                    </li>
-                                                                ))}
+                                                                <li key={index}>
+                                                                    <input
+                                                                        className="form-control"
+                                                                        type="number"
+                                                                        min="1"
+                                                                        value={
+                                                                            selectedQuantity[
+                                                                                p.id
+                                                                            ] || 1
+                                                                        } // This ensures the input displays the current quantity from the state
+                                                                        onChange={(e) =>
+                                                                            handleQuantityChange(
+                                                                                e,
+                                                                                p.id
+                                                                            )
+                                                                        }
+                                                                    />
+                                                                </li>
                                                             </div>
                                                         </div>
-                                                    )}
-                                                    {/* Product Sizes END */}
+                                                        {/*  Product Quantity END */}
 
-                                                    {/* Product Colors START */}
-                                                    {p.color?.length > 0 && (
-                                                        <div className="mt-3">
-                                                            <li className="p-1">
-                                                                <b className="pe-1">Color:</b>
-                                                                {selectedColors[p.id] || "No Color"}
-                                                            </li>
-                                                            <ul className="list-unstyled d-flex flex-wrap">
-                                                                {p.color?.map((color, index) => (
-                                                                    <li key={index} className="p-1">
-                                                                        <button
-                                                                            className="btn btn-sm me-2 mb-1 p-3"
-                                                                            style={{
-                                                                                backgroundColor:
-                                                                                    color.color_code,
-                                                                            }}
-                                                                            onClick={(e) =>
-                                                                                handleColorButtonClick(
-                                                                                    e,
-                                                                                    p.id,
-                                                                                    color.name
-                                                                                )
-                                                                            }
-                                                                        />
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
+                                                        {/* Product Sizes START */}
+                                                        {p.size?.length > 0 && (
+                                                            <div className="d-flex flex-column">
+                                                                <li className="p-1">
+                                                                    <b className="pe-1">Size:</b>
+                                                                    {selectedSizes[p.id] ||
+                                                                        "No Size"}
+                                                                </li>
+                                                                <div className="p-1 mt-0 pt-0 d-flex flex-wrap">
+                                                                    {p.size?.map((size, index) => (
+                                                                        <li key={index}>
+                                                                            <button
+                                                                                onClick={(e) =>
+                                                                                    handleSizeButtonClick(
+                                                                                        e,
+                                                                                        p.id,
+                                                                                        size.name
+                                                                                    )
+                                                                                }
+                                                                                className="btn btn-secondary btn-sm me-2 mb-1"
+                                                                            >
+                                                                                {size.name}
+                                                                            </button>
+                                                                        </li>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                        {/* Product Sizes END */}
+
+                                                        {/* Product Colors START */}
+                                                        {p.color?.length > 0 && (
+                                                            <div className="mt-3">
+                                                                <li className="p-1">
+                                                                    <b className="pe-1">Color:</b>
+                                                                    {selectedColors[p.id] ||
+                                                                        "No Color"}
+                                                                </li>
+                                                                <ul className="list-unstyled d-flex flex-wrap">
+                                                                    {p.color?.map(
+                                                                        (color, index) => (
+                                                                            <li
+                                                                                key={index}
+                                                                                className="p-1"
+                                                                            >
+                                                                                <button
+                                                                                    className="btn btn-sm me-2 mb-1 p-3"
+                                                                                    style={{
+                                                                                        backgroundColor:
+                                                                                            color.color_code,
+                                                                                    }}
+                                                                                    onClick={(e) =>
+                                                                                        handleColorButtonClick(
+                                                                                            e,
+                                                                                            p.id,
+                                                                                            color.name
+                                                                                        )
+                                                                                    }
+                                                                                />
+                                                                            </li>
+                                                                        )
+                                                                    )}
+                                                                </ul>
+                                                            </div>
+                                                        )}
+                                                        {/* Product Colors END */}
+
+                                                        {/* Add to Cart / Wishlist Btn Start */}
+                                                        <div className="d-flex mt-3 p-1">
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-primary me-1 mb-1"
+                                                                onClick={() =>
+                                                                    handleAddToCart(
+                                                                        p.id,
+                                                                        p.price,
+                                                                        p.shipping_amount
+                                                                    )
+                                                                }
+                                                            >
+                                                                <i className="fas fa-shopping-cart" />
+                                                            </button>
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-danger px-3 me-1 mb-1 ms-2"
+                                                            >
+                                                                <i className="fas fa-heart" />
+                                                            </button>
                                                         </div>
-                                                    )}
-                                                    {/* Product Colors END */}
-
-                                                    {/* Add to Cart / Wishlist Btn Start */}
-                                                    <div className="d-flex mt-3 p-1">
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-primary me-1 mb-1"
-                                                            onClick={() =>
-                                                                handleAddToCart(
-                                                                    p.id,
-                                                                    p.price,
-                                                                    p.shipping_amount
-                                                                )
-                                                            }
-                                                        >
-                                                            <i className="fas fa-shopping-cart" />
-                                                        </button>
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-danger px-3 me-1 mb-1 ms-2"
-                                                        >
-                                                            <i className="fas fa-heart" />
-                                                        </button>
-                                                    </div>
-                                                    {/* Add to Cart / Wishlist Btn END */}
-                                                </ul>
-                                                <button
-                                                    type="button"
-                                                    className="btn btn-danger px-3 me-1 ms-2"
-                                                >
-                                                    <i className="fas fa-heart" />
-                                                </button>
+                                                        {/* Add to Cart / Wishlist Btn END */}
+                                                    </ul>
+                                                    <button
+                                                        type="button"
+                                                        className="btn btn-danger px-3 me-1 ms-2"
+                                                    >
+                                                        <i className="fas fa-heart" />
+                                                    </button>
+                                                </div>
+                                                {/* Variation and Heart END */}
                                             </div>
-                                            {/* Variation and Heart END */}
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+                        )}
                         {/* Products END */}
 
                         {/* Categories START*/}
