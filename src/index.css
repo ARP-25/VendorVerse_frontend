@@ -1,6 +1,19 @@
 body {
   background: #ffffff;
 }
+
+
+
+/* Custom */
+ul.nav li:hover {
+  background-color: #0d6efd;
+  color: #ffffff;
+  border-radius:5px;
+}
+
+
+
+
 .text-danger strong {
   color: #18389f;
 }

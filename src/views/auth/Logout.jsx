@@ -1,10 +1,23 @@
 import React, { useEffect } from "react";
 import { logout } from "../../utils/auth";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+});
 
 function Logout() {
     useEffect(() => {
         logout();
+        Toast.fire({
+            icon: "success",
+            title: "You have been logged out",
+        });
     }, []);
 
     return (

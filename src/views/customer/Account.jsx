@@ -40,7 +40,8 @@ function Account() {
                                                 From your account dashboard. you can easily check
                                                 &amp; view your <a href="">orders</a>, manage your{" "}
                                                 <a href="">shipping</a>
-                                                <a href="">Edit Account</a>
+                                                <span> or </span>
+                                                <a href="">Edit Account</a>.
                                             </div>
                                         </div>
                                     </section>

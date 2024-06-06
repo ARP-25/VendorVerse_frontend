@@ -5,6 +5,16 @@ import apiInstance from "../../utils/axios";
 import UserData from "../plugin/UserData";
 import Sidebar from "./Sidebar";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+});
+
 function ReviewDetail() {
     const [review, setReview] = useState([]);
     const [updateReview, setUpdateReview] = useState({ reply: "" });
@@ -37,9 +47,17 @@ function ReviewDetail() {
             .patch(`vendor/reviews-detail/${UserData()?.vendor_id}/${param.review_id}/`, formData)
             .then((res) => {
                 console.log(res.data);
+                Toast.fire({
+                    icon: "success",
+                    title: "Reply added successfully",
+                });
             })
             .catch((error) => {
                 console.error("Error adding reply:", error);
+                Toast.fire({
+                    icon: "error",
+                    title: "Error adding reply",
+                });
             });
         fetchData();
     };

@@ -2,10 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/auths";
 import { useState, useContext } from "react";
 import { CartContext } from "../plugin/Context";
+import UserData from "../plugin/UserData";
 
 function StoreHeader() {
     const isLoggedIn = useAuthStore((state) => state.isLoggedIn());
     const user = useAuthStore((state) => state.user());
+    const userDataDecoded = UserData();
 
     const [search, setSearch] = useState("");
 
@@ -21,6 +23,8 @@ function StoreHeader() {
     };
 
     const cartCount = useContext(CartContext);
+    console.log("user", user);
+    console.log("userDataDecoded", userDataDecoded);
 
     return (
         <div>
@@ -31,12 +35,25 @@ function StoreHeader() {
                         VendorVerse
                     </Link>
 
+                    {/* Hamburger Button */}
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
                     {/* All Nav Elements */}
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         {/* Pages / Account / Vendor */}
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             {/* Pages */}
-                            <li className="nav-item dropdown">
+                            {/* <li className="nav-item dropdown">
                                 <a
                                     className="nav-link dropdown-toggle"
                                     href="#"
@@ -60,7 +77,7 @@ function StoreHeader() {
                                     </li>
                                     <li>
                                         <a className="dropdown-item" href="#">
-                                            Blog{" "}
+                                            Blog
                                         </a>
                                     </li>
                                     <li>
@@ -79,7 +96,7 @@ function StoreHeader() {
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> */}
 
                             {/* Account */}
                             <li className="nav-item dropdown">
@@ -91,6 +108,7 @@ function StoreHeader() {
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
+                                    <i className="fas fa-user me-2"></i>
                                     Account
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -135,60 +153,52 @@ function StoreHeader() {
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
+                                    <i className="fas fa-store me-2"></i>
                                     Vendor
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/dashboard/">
-                                            {" "}
-                                            <i className="fas fa-user"></i> Dashboard
+                                            <i className="fas fa-tachometer-alt"></i> Dashboard
                                         </Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/products/">
-                                            {" "}
-                                            <i className="bi bi-grid-fill"></i> Products
+                                            <i className="fas fa-box"></i> Products
                                         </Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/product/new/">
-                                            {" "}
                                             <i className="fas fa-plus-circle"></i> Add Products
                                         </Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/orders/">
-                                            {" "}
                                             <i className="fas fa-shopping-cart"></i> Orders
                                         </Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/earning/">
-                                            {" "}
                                             <i className="fas fa-dollar-sign"></i> Earning
                                         </Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/reviews/">
-                                            {" "}
                                             <i className="fas fa-star"></i> Reviews
                                         </Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/coupon/">
-                                            {" "}
                                             <i className="fas fa-tag"></i> Coupon
                                         </Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/notifications/">
-                                            {" "}
                                             <i className="fas fa-bell fa-shake"></i> Notifications
                                         </Link>
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/vendor/settings/">
-                                            {" "}
                                             <i className="fas fa-gear fa-spin"></i> Settings
                                         </Link>
                                     </li>
@@ -197,38 +207,34 @@ function StoreHeader() {
                         </ul>
 
                         {/* Search Input and Button */}
-                        <div className="d-flex">
+                        <form className="d-flex pe-5  w-50" onSubmit={handleSearchSubmit}>
                             <input
                                 onChange={handleSearchChange}
                                 name="search"
-                                className="form-control me-2"
+                                className="form-control me-2 min-w-100"
                                 type="text"
                                 placeholder="Search"
                                 aria-label="Search"
                             />
-                            <button
-                                onClick={handleSearchSubmit}
-                                className="btn btn-outline-success me-2"
-                                type="submit"
-                            >
-                                Search
+                            <button className="btn btn-outline-success me-2" type="submit">
+                                <i className="fas fa-search"></i>
                             </button>
-                        </div>
+                        </form>
 
                         {/* Login / Register / Logout / Dashboard / Cart */}
                         {isLoggedIn ? (
                             <>
-                                {" "}
                                 <Link className="btn btn-primary me-2 mt-2 mt-lg-0" to="/logout">
+                                    <i className="fas fa-sign-out-alt me-2"></i>
                                     Logout
                                 </Link>
                                 <Link className="btn btn-primary me-2 mt-2 mt-lg-0" to="/dashboard">
+                                    <i className="fas fa-tachometer-alt me-2"></i>
                                     Dashboard
                                 </Link>
                             </>
                         ) : (
                             <>
-                                {" "}
                                 <Link className="btn btn-primary me-2 mt-2 mt-lg-0" to="/login">
                                     Login
                                 </Link>

@@ -22,7 +22,7 @@ function Sidebar() {
     }, []);
 
     return (
-        <div className="col-lg-3">
+        <div className="col-lg-3 mb-5 ">
             <div className="d-flex justify-content-center align-items-center flex-column mb-4 shadow rounded-3">
                 <img src={profile.image} style={{ width: 120, borderRadius: 60 }} alt="" />
                 <div className="text-center">
@@ -50,7 +50,6 @@ function Sidebar() {
                             </Link>
                         </div>
                     </div>
-                    <span className="badge bg-primary rounded-pill">14</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-start">
                     <div className="ms-2 me-auto">
@@ -69,7 +68,6 @@ function Sidebar() {
                             </Link>
                         </div>
                     </div>
-                    <span className="badge bg-primary rounded-pill">14</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-start">
                     <div className="ms-2 me-auto">
