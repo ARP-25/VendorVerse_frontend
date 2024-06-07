@@ -166,7 +166,7 @@ function ProductDetail() {
         }
     };
 
-    console.log("Review Data", reviews);
+    console.log("Product", product);
     return (
         <main className="mb-4 mt-4">
             <div className="container">
@@ -223,31 +223,25 @@ function ProductDetail() {
                                     {/* Rating Stars */}
                                     <ul className="mb-3 d-flex p-0" style={{ listStyle: "none" }}>
                                         <li>
-                                            <i
-                                                className="fas fa-star fa-sm text-warning ps-0"
-                                                title="Bad"
-                                            />
-                                            <i
-                                                className="fas fa-star fa-sm text-warning ps-0"
-                                                title="Bad"
-                                            />
-                                            <i
-                                                className="fas fa-star fa-sm text-warning ps-0"
-                                                title="Bad"
-                                            />
-                                            <i
-                                                className="fas fa-star fa-sm text-warning ps-0"
-                                                title="Bad"
-                                            />
-                                            <i
-                                                className="fas fa-star fa-sm text-warning ps-0"
-                                                title="Bad"
-                                            />
+                                            {[...Array(5)].map((_, index) => (
+                                                <i
+                                                    key={index}
+                                                    className={`fa fa-star fa-sm ${index < product?.rating ? "text-warning" : "text-dark"} ps-0`}
+                                                    title={
+                                                        index < product?.rating
+                                                            ? "Rated"
+                                                            : "Not Rated"
+                                                    }
+                                                />
+                                            ))}
                                         </li>
 
                                         <li style={{ marginLeft: 10, fontSize: 13 }}>
                                             <a href="" className="text-decoration-none">
-                                                <strong className="me-2">4/5</strong>(2 reviews)
+                                                <strong className="me-2">
+                                                    {product?.rating}/5
+                                                </strong>
+                                                ({product?.rating_count} reviews)
                                             </a>
                                         </li>
                                     </ul>
@@ -604,11 +598,17 @@ function ProductDetail() {
                                                             {moment(r.date).format("MMM D, YYYY")}
                                                         </p>
                                                         <p className="card-text">{r.review}</p>
-                                                        {[...Array(r.rating)].map((_, index) => (
+
+                                                        {[...Array(5)].map((_, index) => (
                                                             <i
                                                                 key={index}
-                                                                className="fa fa-star text-warning"
-                                                            ></i>
+                                                                className={`fa fa-star fa-sm ${index < r?.rating ? "text-warning" : "text-dark"} ps-0`}
+                                                                title={
+                                                                    index < product?.rating
+                                                                        ? "Rated"
+                                                                        : "Not Rated"
+                                                                }
+                                                            />
                                                         ))}
                                                     </div>
                                                 </div>
