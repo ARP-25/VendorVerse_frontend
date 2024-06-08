@@ -17,6 +17,7 @@ const Toast = Swal.mixin({
 function CustomerNotification() {
     const [notifications, setNotifications] = useState([]);
     const userData = UserData();
+    const [loading, setLoading] = useState(true);
 
     const fetchNotifications = () => {
         apiInstance
@@ -24,6 +25,7 @@ function CustomerNotification() {
             .then((res) => {
                 setNotifications(res.data);
                 console.log(res.data);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error("Failed to fetch notifications:", error);
@@ -66,40 +68,51 @@ function CustomerNotification() {
                                             </h3>
                                             {/* Notifications Loop */}
                                             <div className="list-group">
-                                                {notifications?.map((n, index) => (
-                                                    <a
-                                                        href="#"
-                                                        className="list-group-item list-group-item-action"
-                                                        key={n.id}
-                                                    >
-                                                        <div className="d-flex w-100 justify-content-between">
-                                                            <h5 className="mb-1">
-                                                                Order Confirmed
-                                                            </h5>
-                                                            <small className="text-muted">
-                                                                {moment(n.date).format(
-                                                                    "MMM Do YYYY"
-                                                                )}
-                                                            </small>
-                                                        </div>
-                                                        <p className="mb-1">
-                                                            Your order has been confirmed
-                                                        </p>
+                                                {loading ? (
+                                                    <>
+                                                        <h5 className="mt-5 text-center text-info">
+                                                            Loading Notifications...{" "}
+                                                            <i className="fas fa-spinner fa-spin loading-icon text-info"></i>
+                                                        </h5>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        {notifications?.map((n, index) => (
+                                                            <a
+                                                                href="#"
+                                                                className="list-group-item list-group-item-action"
+                                                                key={n.id}
+                                                            >
+                                                                <div className="d-flex w-100 justify-content-between">
+                                                                    <h5 className="mb-1">
+                                                                        Order Confirmed
+                                                                    </h5>
+                                                                    <small className="text-muted">
+                                                                        {moment(n.date).format(
+                                                                            "MMM Do YYYY"
+                                                                        )}
+                                                                    </small>
+                                                                </div>
+                                                                <p className="mb-1">
+                                                                    Your order has been confirmed
+                                                                </p>
 
-                                                        <button
-                                                            className="btn btn-success mt-3"
-                                                            onClick={() =>
-                                                                markNotificationAsSeen(n.id)
-                                                            }
-                                                        >
-                                                            <i className="fas fa-eye"></i>
-                                                        </button>
-                                                    </a>
-                                                ))}
-                                                {notifications.length === 0 && (
-                                                    <h4 className="p-4">
-                                                        No New Notifications Available{" "}
-                                                    </h4>
+                                                                <button
+                                                                    className="btn btn-success mt-3"
+                                                                    onClick={() =>
+                                                                        markNotificationAsSeen(n.id)
+                                                                    }
+                                                                >
+                                                                    <i className="fas fa-eye"></i>
+                                                                </button>
+                                                            </a>
+                                                        ))}
+                                                        {notifications.length === 0 && (
+                                                            <h4 className="p-4">
+                                                                No New Notifications Available{" "}
+                                                            </h4>
+                                                        )}
+                                                    </>
                                                 )}
                                             </div>
                                         </section>

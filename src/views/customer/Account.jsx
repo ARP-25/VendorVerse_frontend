@@ -36,12 +36,24 @@ function Account() {
                                     <section className="">
                                         <div className="row rounded shadow p-3">
                                             <h2>Hi {profile.full_name}, </h2>
-                                            <div className="col-lg-12 mb-4 mb-lg-0 h-100">
+                                            <div
+                                                id="dashboard"
+                                                className="col-lg-12 mb-4 mb-lg-0 h-100"
+                                            >
                                                 From your account dashboard. you can easily check
-                                                &amp; view your <a href="">orders</a>, manage your{" "}
-                                                <a href="">shipping</a>
+                                                &amp; view your{" "}
+                                                <strong>
+                                                    <a href="">orders</a>
+                                                </strong>
+                                                , manage your{" "}
+                                                <strong>
+                                                    <a href="">shipping</a>
+                                                </strong>
                                                 <span> or </span>
-                                                <a href="">Edit Account</a>.
+                                                <strong>
+                                                    <a href="">edit account</a>.{" "}
+                                                </strong>
+                                                Just use the sidebar to get started.
                                             </div>
                                         </div>
                                     </section>

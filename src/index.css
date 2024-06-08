@@ -120,7 +120,10 @@ footer li a:hover::before {
 
 
 
+#dashboard a {
+  color: #17A2BF !important;
 
+}
 
 .text-danger strong {
   color: #18389f;
@@ -128,7 +131,7 @@ footer li a:hover::before {
 .receipt-main {
   background: #ffffff none repeat scroll 0 0;
   border-bottom: 12px solid #333333;
-  border-top: 12px solid #18389f;
+  border-top: 12px solid rgb(121,208,0);
   margin-top: 50px;
   margin-bottom: 50px;
   padding: 40px 30px !important;

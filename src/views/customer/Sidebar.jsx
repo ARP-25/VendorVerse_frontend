@@ -26,11 +26,15 @@ function Sidebar() {
             <div className="d-flex justify-content-center align-items-center flex-column mb-4 pt-4 shadow rounded-3">
                 <img src={profile.image} style={{ width: 120, borderRadius: 60 }} alt="" />
                 <div className="text-center">
-                    <h3 className="mb-0">{profile.full_name}</h3>
-                    <p className="mt-0">
-                        <Link className="text-info" to={`/customer/settings/`}>
-                            Edit Account
-                        </Link>
+                    <h3 className="mb-0 mt-1">{profile.full_name}</h3>
+                    <p className="mt-1">
+                        <small>
+                            <strong>
+                                <Link className="text-info" to={`/customer/settings/`}>
+                                    Edit Account
+                                </Link>
+                            </strong>
+                        </small>
                     </p>
                 </div>
             </div>

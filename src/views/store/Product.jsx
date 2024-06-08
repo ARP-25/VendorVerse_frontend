@@ -207,8 +207,16 @@ function Product() {
                                 </div>
                             )}
                             {/* Products START */}
+                            <div className="row mt-4 mb-4">
+                                <div className="col-lg-6 col-md-8 mx-auto">
+                                    <h1 className="fw-light">Products</h1>
+                                    <p className="lead text-muted">
+                                        Check out our wide variety of products
+                                    </p>
+                                </div>
+                            </div>
                             {isLoadingProducts && (
-                                <h5 className="mt-5 text-center text-info">
+                                <h5 className="mt-5 mb-5 text-center text-info">
                                     Loading Products...{" "}
                                     <i className="fas fa-spinner fa-spin loading-icon"></i>
                                 </h5>

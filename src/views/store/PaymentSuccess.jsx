@@ -2,7 +2,7 @@ import React from "react";
 import apiInstance from "../../utils/axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 function PaymentSuccess() {
     const [order, setOrder] = useState([]);
     const [status, setStatus] = useState("Verifying Payment...");
@@ -68,6 +68,10 @@ function PaymentSuccess() {
     useEffect(() => {
         console.log("Current status:", status);
     }, [status]);
+
+    const handlePrint = () => {
+        window.print();
+    };
 
     return (
         <div>
@@ -209,17 +213,21 @@ function PaymentSuccess() {
                                                                     View Order{" "}
                                                                     <i className="fas fa-eye" />{" "}
                                                                 </button>
-                                                                <a
-                                                                    href="/"
-                                                                    className="btn btn-primary mt-3 ms-2"
+                                                                <button
+                                                                    id="printButton"
+                                                                    className="btn btn-info mt-3 ms-2"
+                                                                    onClick={handlePrint}
                                                                 >
-                                                                    Download Invoice{" "}
-                                                                    <i className="fas fa-file-invoice" />{" "}
-                                                                </a>
-                                                                <a className="btn btn-secondary mt-3 ms-2">
+                                                                    Print{" "}
+                                                                    <i className="fas fa-print" />
+                                                                </button>
+                                                                <Link
+                                                                    to={`/`}
+                                                                    className="btn btn-secondary mt-3 ms-2"
+                                                                >
                                                                     Go Home{" "}
                                                                     <i className="fas fa-fa-arrow-left" />{" "}
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                     </div>

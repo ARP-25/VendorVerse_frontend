@@ -5,15 +5,18 @@ import { useState, useEffect } from "react";
 import UserData from "../plugin/UserData";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { set } from "react-hook-form";
 
 function Orders() {
     const [orders, setOrders] = useState([]);
     const userData = UserData();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         apiInstance.get(`customer/orders/${userData?.user_id}/`).then((res) => {
             setOrders(res.data);
             console.log(res.data);
+            setIsLoading(false);
         });
     }, []);
 
@@ -164,51 +167,64 @@ function Orders() {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {orders.map((o, index) => (
-                                                            <tr key={o.oid}>
-                                                                <td>
-                                                                    <p className="fw-bold mb-1">
-                                                                        #{o.oid}{" "}
-                                                                    </p>
-                                                                    <p className="text-muted mb-0">
-                                                                        {moment(o.date).format(
-                                                                            "MMM Do YYYY"
-                                                                        )}
-                                                                    </p>
-                                                                </td>
-                                                                <td>
-                                                                    <p className="fw-normal mb-1">
-                                                                        {o.payment_status.toUpperCase()}
-                                                                    </p>
-                                                                </td>
-                                                                <td>
-                                                                    <p className="fw-normal mb-1">
-                                                                        {o.order_status.toUpperCase()}
-                                                                    </p>
-                                                                </td>
-                                                                <td>
-                                                                    <span className="fw-normal mb-1">
-                                                                        {o.total}
-                                                                    </span>
-                                                                </td>
-                                                                <td>
-                                                                    <Link
-                                                                        to={`/customer/orders/${o.oid}/`}
-                                                                        className="btn btn-link btn-sm btn-rounded"
-                                                                    >
-                                                                        View{" "}
-                                                                        <i className="fas fa-eye ps-1" />
-                                                                    </Link>
-                                                                    <Link
-                                                                        to={`/customer/invoice/${o.oid}/`}
-                                                                        className="btn btn-link btn-sm btn-rounded"
-                                                                    >
-                                                                        Invoice{" "}
-                                                                        <i className="fas fa-file-invoice ps-1" />
-                                                                    </Link>
-                                                                </td>
-                                                            </tr>
-                                                        ))}
+                                                        {isLoading ? (
+                                                            <>
+                                                                <h5 className="mt-5 text-center text-info">
+                                                                    Loading Orders...{" "}
+                                                                    <i className="fas fa-spinner fa-spin loading-icon text-info"></i>
+                                                                </h5>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                {orders.map((o, index) => (
+                                                                    <tr key={o.oid}>
+                                                                        <td>
+                                                                            <p className="fw-bold mb-1">
+                                                                                #{o.oid}{" "}
+                                                                            </p>
+                                                                            <p className="text-muted mb-0">
+                                                                                {moment(
+                                                                                    o.date
+                                                                                ).format(
+                                                                                    "MMM Do YYYY"
+                                                                                )}
+                                                                            </p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p className="fw-normal mb-1">
+                                                                                {o.payment_status.toUpperCase()}
+                                                                            </p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p className="fw-normal mb-1">
+                                                                                {o.order_status.toUpperCase()}
+                                                                            </p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span className="fw-normal mb-1">
+                                                                                {o.total}
+                                                                            </span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <Link
+                                                                                to={`/customer/orders/${o.oid}/`}
+                                                                                className="btn btn-link btn-sm btn-rounded"
+                                                                            >
+                                                                                View{" "}
+                                                                                <i className="fas fa-eye ps-1" />
+                                                                            </Link>
+                                                                            <Link
+                                                                                to={`/customer/invoice/${o.oid}/`}
+                                                                                className="btn btn-link btn-sm btn-rounded"
+                                                                            >
+                                                                                Invoice{" "}
+                                                                                <i className="fas fa-file-invoice ps-1" />
+                                                                            </Link>
+                                                                        </td>
+                                                                    </tr>
+                                                                ))}
+                                                            </>
+                                                        )}
                                                     </tbody>
                                                 </table>
                                             </div>
