@@ -67,12 +67,12 @@ function StoreFooter() {
                                 <strong>About us</strong>
                             </p>
                             <p>
-                                Welcome to VendorVerse, your premier destination for a diverse and
-                                vibrant shopping experience. Our platform brings together a wide
-                                range of vendors, offering a unique selection of products that cater
-                                to every taste and need. Whether you're looking for the latest
-                                fashion trends, cutting-edge electronics, handmade crafts, or
-                                everyday essentials, you'll find it all here.
+                                Welcome to VendorVerse, your go-to destination for a vibrant and
+                                diverse shopping experience. Our platform connects a wide range of
+                                vendors, offering everything from the latest fashion trends and
+                                cutting-edge electronics to handmade crafts and everyday essentials.
+                                At VendorVerse, everyone can buy or sell products, making it the
+                                ultimate marketplace for all your needs.
                             </p>
                         </div>
                         {/*Grid column*/}
@@ -113,22 +113,32 @@ function StoreFooter() {
                             <ul className="list-unstyled">
                                 <li>
                                     <a href="#!" className="text-dark">
+                                        Books
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!" className="text-dark">
+                                        Clothing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!" className="text-dark">
                                         Electronics
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#!" className="text-dark">
-                                        Fashion
+                                        Home Appliances
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#!" className="text-dark">
-                                        Beauty
+                                        Sports Equipment
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#!" className="text-dark">
-                                        Automotive
+                                        Toys
                                     </a>
                                 </li>
                             </ul>
@@ -169,9 +179,9 @@ function StoreFooter() {
                 {/* Grid container */}
                 {/* Copyright */}
                 <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
-                    © 2020 Copyright:
-                    <a className="text-dark" href="https://mdbootstrap.com/">
-                        MDBootstrap.com
+                    © 2024 Copyright:
+                    <a className="ms-1 text-dark" href="https://mdbootstrap.com/">
+                        angeloroccopucci.com
                     </a>
                 </div>
                 {/* Copyright */}

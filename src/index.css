@@ -32,10 +32,36 @@ ul.nav li:hover {
   /* border-radius: 1em!important; */
  
 }
+.hero-section {
+  position: relative;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* .nav-pills .nav-link {
-  border-radius: 1em!important;
-} */
+.hero-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slogan-container {
+  position: absolute;
+  color: #212529;
+  text-align: center;
+  font-weight: bold;
+  
+  /* border: 1px solid black; */
+  border-radius: 40px;
+  padding: 10px 25px;
+  background: transparent; /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply the blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: add some shadow for better visibility */
+}
+
+
+
 
 
 .text-danger strong {

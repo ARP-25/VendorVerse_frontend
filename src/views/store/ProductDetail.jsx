@@ -167,6 +167,7 @@ function ProductDetail() {
     };
 
     console.log("Product", product);
+
     return (
         <main className="mb-4 mt-4">
             <div className="container">
@@ -237,12 +238,14 @@ function ProductDetail() {
                                         </li>
 
                                         <li style={{ marginLeft: 10, fontSize: 13 }}>
-                                            <a href="" className="text-decoration-none">
+                                            <span href="" className="text-decoration-none">
                                                 <strong className="me-2">
-                                                    {product?.rating}/5
+                                                    {product?.rating_count > 0
+                                                        ? `${product?.rating}/5`
+                                                        : "0/5"}
                                                 </strong>
                                                 ({product?.rating_count} reviews)
-                                            </a>
+                                            </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -504,7 +507,7 @@ function ProductDetail() {
                             <div className="row g-0">
                                 <div className="col-md-4">
                                     <img
-                                        src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                                        src={product?.vendor?.image}
                                         style={{
                                             height: "100%",
                                             width: "100%",
@@ -516,8 +519,8 @@ function ProductDetail() {
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title">John Doe</h5>
-                                        <p className="card-text">Frontend Developer</p>
+                                        <h5 className="card-title">{product?.vendor?.name}</h5>
+                                        <p className="card-text">{product?.vendor?.description}</p>
                                     </div>
                                 </div>
                             </div>

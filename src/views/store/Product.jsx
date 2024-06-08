@@ -6,6 +6,7 @@ import UserData from "../plugin/UserData";
 import CartID from "../plugin/CartID";
 import Swal from "sweetalert2";
 import { CartContext } from "../plugin/Context";
+import HeroSection from "./Hero";
 
 const Toast = Swal.mixin({
     toast: true,
@@ -141,7 +142,7 @@ function Product() {
             <div>
                 {/*Main layout*/}
                 <main className="">
-                    <section>
+                    {/* <section>
                         <div className="">
                             <img
                                 src="https://plus.unsplash.com/premium_photo-1681487933632-c9eda34fcaf1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -149,8 +150,29 @@ function Product() {
                                 className="w-100"
                                 style={{ height: "50vh", objectFit: "cover" }}
                             />
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1 }}
+                                className="slogan-container"
+                                style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    left: "50%",
+                                    transform: "translate(-50%, -50%)",
+                                    color: "white",
+                                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                                    textAlign: "center",
+                                    fontSize: "2rem",
+                                    fontWeight: "bold",
+                                }}
+                            >
+                                Shop Everything, Sell Anything - Discover Your Marketplace at
+                                VendorVerse!
+                            </motion.div>
                         </div>
-                    </section>
+                    </section> */}
+                    <HeroSection />
                     <div className="container mt-4">
                         <section className="text-center">
                             {/* Categories START*/}
