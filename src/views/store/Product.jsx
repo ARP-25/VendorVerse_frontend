@@ -189,6 +189,7 @@ function Product() {
                                             key={c.id}
                                             className="category col-6 col-md-4 col-lg-2 pt-2"
                                             onClick={() => filterCategory(c.title)}
+                                            style={{ position: "relative", overflow: "hidden" }} // Ensure the parent div has relative positioning and hidden overflow
                                         >
                                             <img
                                                 src={c.image}
@@ -200,7 +201,7 @@ function Product() {
                                                 }}
                                                 alt=""
                                             />
-                                            <h6>{c.title}</h6>
+                                            <h6 style={{ zIndex: 1 }}>{c.title}</h6>
                                         </div>
                                     ))}
                                 </div>
@@ -642,18 +643,20 @@ function Product() {
                                                             </div>
                                                             {/* Add to Cart / Wishlist Btn END */}
                                                         </ul>
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-danger px-3 me-1 ms-2"
-                                                            onClick={() =>
-                                                                addToWishlist(
-                                                                    p.id,
-                                                                    userData?.user_id
-                                                                )
-                                                            }
-                                                        >
-                                                            <i className="fas fa-heart" />
-                                                        </button>
+                                                        <span>
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-danger px-3 me-1 ms-2"
+                                                                onClick={() =>
+                                                                    addToWishlist(
+                                                                        p.id,
+                                                                        userData?.user_id
+                                                                    )
+                                                                }
+                                                            >
+                                                                <i className="fas fa-heart" />
+                                                            </button>
+                                                        </span>
                                                     </div>
                                                     {/* Variation and Heart END */}
                                                 </div>

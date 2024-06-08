@@ -1,67 +1,60 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function StoreFooter() {
     return (
         <div>
             <footer className="bg-light text-center text-lg-start">
-                {/* Grid container */}
                 <div className="container-fluid p-4">
                     <div className="row">
                         <div className="col-md-6 mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start align-items-center">
                             <strong>Get connected with us on social networks</strong>
                         </div>
                         <div className="col-md-6 d-flex justify-content-center justify-content-md-end">
-                            {/* Facebook */}
-                            <a
+                            <Link
                                 className="btn btn-primary btn-sm btn-floating me-2"
-                                style={{ backgroundColor: "#3b5998" }}
-                                href="#!"
+                                style={{ backgroundColor: "#3b5998", width: "40px" }}
+                                to="#!"
                                 role="button"
                             >
                                 <i className="fab fa-facebook-f" />
-                            </a>
-                            {/* Twitter */}
-                            <a
+                            </Link>
+                            <Link
                                 className="btn text-white btn-sm btn-floating me-2"
-                                style={{ backgroundColor: "#55acee" }}
-                                href="#!"
+                                style={{ backgroundColor: "#55acee", width: "40px" }}
+                                to="#!"
                                 role="button"
                             >
                                 <i className="fab fa-twitter" />
-                            </a>
-                            {/* Pinterest */}
-                            <a
+                            </Link>
+                            <Link
                                 className="btn text-white btn-sm btn-floating me-2"
-                                style={{ backgroundColor: "#c61118" }}
-                                href="#!"
+                                style={{ backgroundColor: "#c61118", width: "40px" }}
+                                to="#!"
                                 role="button"
                             >
                                 <i className="fab fa-pinterest" />
-                            </a>
-                            {/* Youtube */}
-                            <a
+                            </Link>
+                            <Link
                                 className="btn text-white btn-sm btn-floating me-2"
-                                style={{ backgroundColor: "#ed302f" }}
-                                href="#!"
+                                style={{ backgroundColor: "#ed302f", width: "40px" }}
+                                to="#!"
                                 role="button"
                             >
                                 <i className="fab fa-youtube" />
-                            </a>
-                            {/* Instagram */}
-                            <a
+                            </Link>
+                            <Link
                                 className="btn text-white btn-sm btn-floating me-2"
-                                style={{ backgroundColor: "#ac2bac" }}
-                                href="#!"
+                                style={{ backgroundColor: "#ac2bac", width: "40px" }}
+                                to="#!"
                                 role="button"
                             >
                                 <i className="fab fa-instagram" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <hr className="my-3" />
-                    {/*Grid row*/}
                     <div className="row">
-                        {/*Grid column*/}
                         <div className="col-lg-4 mb-4 mb-lg-0">
                             <p>
                                 <strong>About us</strong>
@@ -75,116 +68,105 @@ function StoreFooter() {
                                 ultimate marketplace for all your needs.
                             </p>
                         </div>
-                        {/*Grid column*/}
-                        {/*Grid column*/}
                         <div className="col-lg-3 mb-4 mb-lg-0">
                             <p>
                                 <strong>Useful links</strong>
                             </p>
                             <ul className="list-unstyled mb-0">
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="#!" className="text-dark">
                                         Privacy policy
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="#!" className="text-dark">
                                         Media
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="#!" className="text-dark">
                                         Job offers
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="#!" className="text-dark">
                                         Cooperation
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
-                        {/*Grid column*/}
-                        {/*Grid column*/}
                         <div className="col-lg-3 mb-4 mb-lg-0">
                             <p>
                                 <strong>Products</strong>
                             </p>
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="/search?query=Books" className="text-dark">
                                         Books
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="/search?query=Clothing" className="text-dark">
                                         Clothing
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="/search?query=Electronics" className="text-dark">
                                         Electronics
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="/search?query=Home Appliances" className="text-dark">
                                         Home Appliances
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="/search?query=Sports Equipment" className="text-dark">
                                         Sports Equipment
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="/search?query=Toys" className="text-dark">
                                         Toys
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
-                        {/*Grid column*/}
-                        {/*Grid column*/}
                         <div className="col-lg-2 mb-4 mb-lg-0">
                             <p>
                                 <strong>Support</strong>
                             </p>
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="#!" className="text-dark">
                                         Complaints
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="#!" className="text-dark">
                                         Help center
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="#!" className="text-dark">
                                         Community
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#!" className="text-dark">
+                                    <Link to="#!" className="text-dark">
                                         FAQ
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
-                        {/*Grid column*/}
                     </div>
-                    {/*Grid row*/}
                 </div>
-                {/* Grid container */}
-                {/* Copyright */}
                 <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
                     © 2024 Copyright:
-                    <a className="ms-1 text-dark" href="https://mdbootstrap.com/">
+                    <Link className="ms-1 text-dark" to="https://mdbootstrap.com/">
                         angeloroccopucci.com
-                    </a>
+                    </Link>
                 </div>
-                {/* Copyright */}
             </footer>
         </div>
     );

@@ -209,7 +209,7 @@ function Checkout() {
                                                 </div>
                                             </div>
 
-                                            <h5 className="mb-4 mt-4">Billing address</h5>
+                                            {/* <h5 className="mb-4 mt-4">Billing address</h5>
                                             <div className="form-check mb-2">
                                                 <input
                                                     className="form-check-input me-2"
@@ -224,7 +224,7 @@ function Checkout() {
                                                 >
                                                     Same as shipping address
                                                 </label>
-                                            </div>
+                                            </div> */}
                                         </form>
                                     </section>
                                     {/* Section: Biling details */}
@@ -267,7 +267,7 @@ function Checkout() {
                                                 value={couponCode}
                                                 name="couponCode"
                                                 type="text"
-                                                className="form-control"
+                                                className="form-control mx-2"
                                                 style={{ border: "dashed 1px gray" }}
                                                 placeholder="Enter Coupon Code"
                                                 onChange={(e) => setCouponCode(e.target.value)}

@@ -272,12 +272,14 @@ function Search() {
                                                         </div>
                                                         {/* Add to Cart / Wishlist Btn END */}
                                                     </ul>
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-danger px-3 me-1 ms-2"
-                                                    >
-                                                        <i className="fas fa-heart" />
-                                                    </button>
+                                                    <span>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-danger px-3 me-1 ms-2"
+                                                        >
+                                                            <i className="fas fa-heart" />
+                                                        </button>
+                                                    </span>
                                                 </div>
                                                 {/* Variation and Heart END */}
                                             </div>

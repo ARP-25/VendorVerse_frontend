@@ -1,7 +1,5 @@
-import React from "react";
-import Sidebar from "./Sidebar";
-import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import apiInstance from "../../utils/axios";
 import UserData from "../plugin/UserData";
 import moment from "moment";
@@ -20,9 +18,13 @@ function Invoice() {
                 setOrderItems(res.data.items);
             })
             .catch((error) => {
-                console.error("Failed to fetch user data:", error);
+                console.error("Failed to fetch order data:", error);
             });
     }, []);
+
+    const handlePrint = () => {
+        window.print();
+    };
 
     return (
         <div>
@@ -35,11 +37,11 @@ function Invoice() {
                             <div className="receipt-left">
                                 <img
                                     className="img-responsive"
-                                    alt="iamgurdeeposahan"
-                                    src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                    alt="VendorVerse Logo"
+                                    src="https://res.cloudinary.com/dbui0ebjv/image/upload/v1717854596/VendorVerse_vsmdgt.webp"
                                     style={{ width: 71, borderRadius: 43 }}
                                 />
-                                <div className="receipt-right">
+                                <div className="receipt-right mt-3">
                                     <h5 className="margin-top-10">
                                         VendorVerse<span className="text-warning">.</span>
                                     </h5>
@@ -58,10 +60,10 @@ function Invoice() {
                         </div>
 
                         {/* Customer */}
-                        <div className="col-12 col-md-6 mt-3 mt-md-0 ">
+                        <div className="col-12 col-md-6 mt-3 mt-md-0">
                             <div className="receipt-right h-100 d-flex flex-column justify-content-end ps-md-5">
                                 <h5>Customer Details</h5>
-                                <p className="">
+                                <p>
                                     <b>
                                         <i className="fa fa-user" />
                                     </b>
@@ -83,22 +85,22 @@ function Invoice() {
                         </div>
 
                         {/* Invoice ID */}
-                        <div className="row">
-                            <h6 className="mt-4">INVOICE ID #{order.oid}</h6>
-                        </div>
+
+                        <h5 className="mt-4">Invoice ID #{order.oid}</h5>
+                        <hr />
                     </div>
-                    <hr />
+
                     {/* Body */}
                     <div>
                         {/* Table */}
                         <table className="table table-bordered">
                             <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Qty</th>
-                                    <th>Sub Total</th>
-                                    <th>Discount</th>
+                                <tr className="text-dark">
+                                    <th className="text-dark">Product</th>
+                                    <th className="text-dark">Price</th>
+                                    <th className="text-dark">Qty</th>
+                                    <th className="text-dark">Sub Total</th>
+                                    <th className="text-dark">Discount</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -116,33 +118,33 @@ function Invoice() {
 
                         {/* Summary */}
                         <div className="row">
-                            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-start"></div>
-                            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
-                                <div className="receipt-right">
-                                    <h5>Summary</h5>
-                                    <p className="mb-2 d-flex justify-content-between">
-                                        <b>Sub Total: </b>${order.sub_total}
-                                    </p>
-                                    <p className="mb-2 d-flex justify-content-between">
-                                        <b>Shipping: </b>${order.shipping_amount}
-                                    </p>
-                                    <p className="mb-2 d-flex justify-content-between">
-                                        <b>Tax: </b>${order.tax_fee}
-                                    </p>
-                                    <p className="mb-2 d-flex justify-content-between">
-                                        <b>Service Fee: </b>${order.service_fee}
-                                    </p>
-                                    <br />
-                                    <p className="mb-2 d-flex justify-content-between">
-                                        <b>Total: </b>${order.total}
-                                    </p>
-                                </div>
-                            </div>
+                            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+
+                            <h5>Summary</h5>
+                            <hr />
+                            <small>
+                                <p className="mb-2 d-flex justify-content-between">
+                                    <b>Sub Total: </b>${order.sub_total}
+                                </p>
+                                <p className="mb-2 d-flex justify-content-between">
+                                    <b>Shipping: </b>${order.shipping_amount}
+                                </p>
+                                <p className="mb-2 d-flex justify-content-between">
+                                    <b>Tax: </b>${order.tax_fee}
+                                </p>
+                                <p className="mb-2 d-flex justify-content-between">
+                                    <b>Service Fee: </b>${order.service_fee}
+                                </p>
+                                <br />
+                                <p className="mb-2 d-flex justify-content-between">
+                                    <b>Total: </b>${order.total}
+                                </p>
+                            </small>
                         </div>
                     </div>
                     <hr />
                     <div className="d-flex justify-content-center align-items-center">
-                        <button id="printButton" className="btn btn-dark">
+                        <button id="printButton" className="btn btn-dark" onClick={handlePrint}>
                             Print <i className="fas fa-print" />
                         </button>
                     </div>

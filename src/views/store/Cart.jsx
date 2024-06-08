@@ -253,7 +253,7 @@ function Cart() {
                                                         </div>
                                                     </div>
 
-                                                    <div className="col-md-8 mb-4 mb-md-0">
+                                                    <div className="col-md-6 mb-4 mb-md-0">
                                                         <Link
                                                             to={null}
                                                             className="fw-bold text-dark mb-4"
@@ -314,7 +314,7 @@ function Cart() {
                                                             </button>
                                                         </p>
                                                     </div>
-                                                    <div className="col-md-2 mb-4 mb-md-0 ">
+                                                    <div className="col-md-4 mb-4 mb-md-0 ">
                                                         <h5>
                                                             <small>
                                                                 {" "}
@@ -324,7 +324,7 @@ function Cart() {
                                                             </small>
                                                         </h5>
 
-                                                        <div className="d-flex justify-content-center align-items-center">
+                                                        <div className="d-flex justify-content-center align-items-right">
                                                             <div className="form-outline">
                                                                 <input
                                                                     type="number"

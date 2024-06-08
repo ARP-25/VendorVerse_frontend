@@ -23,12 +23,14 @@ function Sidebar() {
 
     return (
         <div className="col-lg-3 mb-5 ">
-            <div className="d-flex justify-content-center align-items-center flex-column mb-4 shadow rounded-3">
+            <div className="d-flex justify-content-center align-items-center flex-column mb-4 pt-4 shadow rounded-3">
                 <img src={profile.image} style={{ width: 120, borderRadius: 60 }} alt="" />
                 <div className="text-center">
                     <h3 className="mb-0">{profile.full_name}</h3>
                     <p className="mt-0">
-                        <a href="">Edit Account</a>
+                        <Link className="text-info" to={`/customer/settings/`}>
+                            Edit Account
+                        </Link>
                     </p>
                 </div>
             </div>
@@ -78,7 +80,7 @@ function Sidebar() {
                         </div>
                     </div>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-start">
+                {/* <li className="list-group-item d-flex justify-content-between align-items-start">
                     <div className="ms-2 me-auto">
                         <div className="fw-bold">
                             <Link className="text-dark" to={`/customer/invoice/`}>
@@ -86,7 +88,7 @@ function Sidebar() {
                             </Link>
                         </div>
                     </div>
-                </li>
+                </li> */}
             </ol>
         </div>
     );

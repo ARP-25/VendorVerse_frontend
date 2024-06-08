@@ -42,11 +42,14 @@ function Orders() {
                                         <div className="row gx-xl-5">
                                             <div className="col-lg-4 mb-4 mb-lg-0">
                                                 <div
-                                                    className="rounded shadow"
-                                                    style={{ backgroundColor: "#B2DFDB" }}
+                                                    className="rounded shadow p-2"
+                                                    style={{
+                                                        backgroundColor: "#2a9d8f",
+                                                        height: 120,
+                                                    }}
                                                 >
-                                                    <div className="card-body">
-                                                        <div className="d-flex align-items-center">
+                                                    <div className="card-body h-100">
+                                                        <div className="d-flex align-items-center justify-between h-100">
                                                             <div className="">
                                                                 <p className="mb-1">Orders</p>
                                                                 <h2 className="mb-0">
@@ -59,8 +62,8 @@ function Orders() {
                                                                     ></span>
                                                                 </h2>
                                                             </div>
-                                                            <div className="flex-grow-1 ms-5">
-                                                                <div className="p-3 badge-primary rounded-4">
+                                                            <div className="flex-grow-1 ms-5 ">
+                                                                <div className="p-3 badge-primary d-flex align-items-center justify-content-center rounded-4">
                                                                     <i
                                                                         className="fas fa-shopping-cart fs-4"
                                                                         style={{ color: "#004D40" }}
@@ -73,11 +76,14 @@ function Orders() {
                                             </div>
                                             <div className="col-lg-4 mb-4 mb-lg-0">
                                                 <div
-                                                    className="rounded shadow"
-                                                    style={{ backgroundColor: "#D1C4E9" }}
+                                                    className="rounded shadow p-2"
+                                                    style={{
+                                                        backgroundColor: "#e9c46a",
+                                                        height: 120,
+                                                    }}
                                                 >
-                                                    <div className="card-body">
-                                                        <div className="d-flex align-items-center">
+                                                    <div className="card-body h-100">
+                                                        <div className="d-flex align-items-center justify-between h-100">
                                                             <div className="">
                                                                 <p className="mb-1">
                                                                     Pending Delivery
@@ -93,7 +99,7 @@ function Orders() {
                                                                 </h2>
                                                             </div>
                                                             <div className="flex-grow-1 ms-5">
-                                                                <div className="p-3 badge-primary rounded-4">
+                                                                <div className="p-3 d-flex align-items-center justify-content-center badge-primary rounded-4">
                                                                     <i
                                                                         className="fas fa-clock fs-4"
                                                                         style={{ color: "#6200EA" }}
@@ -106,11 +112,14 @@ function Orders() {
                                             </div>
                                             <div className="col-lg-4 mb-4 mb-lg-0">
                                                 <div
-                                                    className="rounded shadow"
-                                                    style={{ backgroundColor: "#BBDEFB" }}
+                                                    className="rounded shadow p-2"
+                                                    style={{
+                                                        backgroundColor: "#e76f51",
+                                                        height: 120,
+                                                    }}
                                                 >
-                                                    <div className="card-body">
-                                                        <div className="d-flex align-items-center">
+                                                    <div className="card-body h-100">
+                                                        <div className="d-flex align-items-center justify-between h-100">
                                                             <div className="">
                                                                 <p className="mb-1">
                                                                     Fulfilled Orders
