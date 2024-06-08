@@ -3,16 +3,35 @@ import apiInstance from "../../utils/axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../plugin/Context";
+import CartID from "../plugin/CartID";
+import { useContext } from "react";
+
 function PaymentSuccess() {
     const [order, setOrder] = useState([]);
     const [status, setStatus] = useState("Verifying Payment...");
-
+    const [cartCount, setCartCount] = useContext(CartContext);
     const param = useParams();
     const urlParam = new URLSearchParams(window.location.search);
     const sessionID = urlParam.get("session_id");
     const paypal_order_id = urlParam.get("paypal_order_id");
 
     console.log("Paypal Order ID:", paypal_order_id);
+    console.log("Cart ID:", CartID());
+
+    useEffect(() => {
+        const cartID = CartID();
+        console.log("Deleting cart with ID:", cartID);
+        apiInstance
+            .delete(`cart-delete/${cartID}/`)
+            .then((response) => {
+                console.log("Cart deleted:", response.data);
+            })
+            .catch((error) => {
+                console.error("Failed to delete cart:", error);
+            });
+    }, []);
+
     useEffect(() => {
         apiInstance.get(`checkout/${param?.order_oid}`).then((res) => {
             setOrder(res.data);

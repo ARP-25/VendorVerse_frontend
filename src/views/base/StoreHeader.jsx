@@ -8,14 +8,17 @@ function StoreHeader() {
     const isLoggedIn = useAuthStore((state) => state.isLoggedIn());
     const user = useAuthStore((state) => state.user());
     const userDataDecoded = UserData();
+    const navigate = useNavigate();
 
     const [search, setSearch] = useState("");
+
     const texts = ["Search for a Product", "Search for a Category", "Search for a Description"];
     const [placeholder, setPlaceholder] = useState("");
     const [textIndex, setTextIndex] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
     const [showCursor, setShowCursor] = useState(true);
 
+    // Script for typing effect
     useEffect(() => {
         if (charIndex < texts[textIndex].length) {
             const typeInterval = setInterval(() => {
@@ -37,17 +40,16 @@ function StoreHeader() {
         }
     }, [charIndex, textIndex, texts]);
 
+    // Helper functions for search
     const handleSearchChange = (event) => {
         setSearch(event.target.value);
     };
-
-    const navigate = useNavigate();
-
     const handleSearchSubmit = (event) => {
         event.preventDefault();
         navigate(`/search?query=${search}`);
     };
 
+    // CartContext
     const cartCount = useContext(CartContext);
 
     return (

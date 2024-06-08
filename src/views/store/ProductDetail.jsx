@@ -25,6 +25,9 @@ function ProductDetail() {
         rating: 0,
     }); // Review form data
 
+    // Global State for cart count
+    const [cartCount, setCartCount] = useContext(CartContext);
+
     const [colorValue, setColorValue] = useState("No Color"); // Selected color
     const [sizeValue, setSizeValue] = useState("No Size"); // Selected size
     const [quantityValue, setQuantityValue] = useState(1); // Selected quantity
@@ -42,8 +45,6 @@ function ProductDetail() {
         timer: 3000,
         timerProgressBar: true,
     });
-
-    const [cartCount, setCartCount] = useContext(CartContext);
 
     useEffect(() => {
         apiInstance.get(`/products/${param.slug}`).then((res) => {

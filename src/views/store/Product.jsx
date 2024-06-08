@@ -17,6 +17,7 @@ const Toast = Swal.mixin({
 });
 
 function Product() {
+    // console.log("CartID: ", CartID());
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
 
