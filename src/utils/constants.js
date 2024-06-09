@@ -1,7 +1,8 @@
 export const BASE_URL = "https://vendorversebackend-production.up.railway.app/api/v1/";
+
 // prod
-// export const SERVER_URL = "https://vendorversebackend-production.up.railway.app/";
+export const SERVER_URL = "https://vendorversebackend-production.up.railway.app/";
 // dev
-export const SERVER_URL = "http://127.0.0.1:8000/";
+// export const SERVER_URL = "http://127.0.0.1:8000/";
 export const PAYPAL_CLIENT_ID =
     "AccnA48JAvDXFwcWaWxgUwrIAEF_pPKXmmWZVX-JR0ATaAg-rOQzeLihp7jHlL1eWBUeVm6-MnCANvOj";
