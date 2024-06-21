@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
 const Entrance = () => {
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 992);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 992);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <section>
             <div className="row">
                 <div
                     className="hero"
                     style={{
+                        position: "relative",
                         backgroundImage: 'url("/entrance-min.jpg")',
                         backgroundSize: "cover",
                         backgroundPosition: "center",
@@ -16,9 +29,22 @@ const Entrance = () => {
                         color: "white", // Assuming you want white text on the hero image
                     }}
                 >
+                    {isSmallScreen && (
+                        <div
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                                zIndex: 1,
+                            }}
+                        ></div>
+                    )}
                     <div
-                        className="offset-6 col-6 h-100 d-flex flex-column justify-content-center align-center"
-                        style={{ position: "relative", padding: "4rem 8rem" }}
+                        className="offset-lg-6 col-12 col-lg-6 h-100 d-flex flex-column justify-content-center align-center"
+                        style={{ position: "relative", padding: "0 8vw", zIndex: 2 }}
                     >
                         <div
                             style={{
