@@ -12,7 +12,7 @@ function VendorOrdersDetail() {
 
     // Redirect to Vendor Registration Page if Vendor ID is 0(Not a Vendor)
     if (UserData()?.vendor_id === 0) {
-        window.location.href = "/vendor/register/";
+        window.location.href = "/login";
     }
 
     // Fetch Orders after Component Mount

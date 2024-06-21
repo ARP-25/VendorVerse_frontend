@@ -27,15 +27,15 @@ ul.nav li:hover {
   border-radius:5px;
 }
 .category:hover {
-  background-color: #60ACE6;
+  background-color: #17A2B8;
   color: #ffffff;
   border-radius:5px;
   cursor:pointer;
-  box-shadow: 0 0 11px #60ACE6; 
+  box-shadow: 0 0 11px #17A2B8; 
   transition: ease-in-out 0.1s;
 }
 .card:hover {
-  box-shadow: 0 0 11px #60ACE6; 
+  box-shadow: 0 0 11px #17A2B8; 
   transition: ease-in-out 0.1s;
 }
 .nav-item-2 {
