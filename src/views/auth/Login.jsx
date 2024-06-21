@@ -25,7 +25,7 @@ function Login() {
             alert(error);
             setIsLoading(false);
         } else {
-            navigate("/");
+            navigate("/shop");
             resetForm();
             setIsLoading(false);
         }
@@ -33,7 +33,7 @@ function Login() {
 
     useEffect(() => {
         if (isLoggedIn) {
-            navigate("/");
+            navigate("/shop");
         }
     }, [isLoggedIn]); // Adding isLoggedIn as a dependency
 

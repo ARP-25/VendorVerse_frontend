@@ -7,7 +7,7 @@ import UserData from "../plugin/UserData";
 function StoreHeader() {
     const isLoggedIn = useAuthStore((state) => state.isLoggedIn());
     const user = useAuthStore((state) => state.user());
-    const userDataDecoded = UserData();
+    const [userDataDecoded, setUserDataDecoded] = useState(null);
     const navigate = useNavigate();
 
     const [search, setSearch] = useState("");
@@ -17,6 +17,12 @@ function StoreHeader() {
     const [textIndex, setTextIndex] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
     const [showCursor, setShowCursor] = useState(true);
+
+    // Fetch user data once on component mount
+    useEffect(() => {
+        const data = UserData();
+        setUserDataDecoded(data);
+    }, []);
 
     // Script for typing effect
     useEffect(() => {
