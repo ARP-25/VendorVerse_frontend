@@ -41,11 +41,11 @@ function OrderDetail() {
                                 <div className="container px-4">
                                     {/* Section: Summary */}
                                     <section className="mb-5">
-                                        <h3 className="mb-3">
+                                        <h4 className="mb-3">
                                             {" "}
                                             <i className="fas fa-shopping-cart text-primary" /> #
                                             {order.oid}{" "}
-                                        </h3>
+                                        </h4>
                                         <div className="row gx-xl-5">
                                             <div className="col-lg-3 mb-4 mb-lg-0">
                                                 <div
@@ -54,17 +54,17 @@ function OrderDetail() {
                                                 >
                                                     <div className="card-body">
                                                         <div className="d-flex align-items-center">
-                                                            <div className="">
+                                                            <div className="p-2">
                                                                 <p className="mb-1">Total</p>
-                                                                <h2 className="mb-0">
+                                                                <h4 className="mb-0">
                                                                     ${order.total}
                                                                     <span
                                                                         className=""
                                                                         style={{
-                                                                            fontSize: "0.875rem",
+                                                                            fontSize: "0.5rem",
                                                                         }}
                                                                     ></span>
-                                                                </h2>
+                                                                </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -77,19 +77,19 @@ function OrderDetail() {
                                                 >
                                                     <div className="card-body">
                                                         <div className="d-flex align-items-center">
-                                                            <div className="">
+                                                            <div className="p-2">
                                                                 <p className="mb-1">
                                                                     Payment Status
                                                                 </p>
-                                                                <h2 className="mb-0">
+                                                                <h4 className="mb-0">
                                                                     {order.payment_status?.toUpperCase()}
                                                                     <span
                                                                         className=""
                                                                         style={{
-                                                                            fontSize: "0.875rem",
+                                                                            fontSize: "0.5rem",
                                                                         }}
                                                                     ></span>
-                                                                </h2>
+                                                                </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -102,17 +102,17 @@ function OrderDetail() {
                                                 >
                                                     <div className="card-body">
                                                         <div className="d-flex align-items-center">
-                                                            <div className="">
+                                                            <div className="p-2">
                                                                 <p className="mb-1">Order Status</p>
-                                                                <h2 className="mb-0">
+                                                                <h4 className="mb-0">
                                                                     {order.order_status?.toUpperCase()}
                                                                     <span
                                                                         className=""
                                                                         style={{
-                                                                            fontSize: "0.875rem",
+                                                                            fontSize: "0.5rem",
                                                                         }}
                                                                     ></span>
-                                                                </h2>
+                                                                </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -125,19 +125,19 @@ function OrderDetail() {
                                                 >
                                                     <div className="card-body">
                                                         <div className="d-flex align-items-center">
-                                                            <div className="">
+                                                            <div className="p-2">
                                                                 <p className="mb-1">
                                                                     Shipping Amount
                                                                 </p>
-                                                                <h2 className="mb-0">
+                                                                <h4 className="mb-0">
                                                                     ${order.shipping_amount}
                                                                     <span
                                                                         className=""
                                                                         style={{
-                                                                            fontSize: "0.875rem",
+                                                                            fontSize: "0.5rem",
                                                                         }}
                                                                     ></span>
-                                                                </h2>
+                                                                </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -150,17 +150,17 @@ function OrderDetail() {
                                                 >
                                                     <div className="card-body">
                                                         <div className="d-flex align-items-center">
-                                                            <div className="">
+                                                            <div className="p-2">
                                                                 <p className="mb-1">Tax Fee</p>
-                                                                <h2 className="mb-0">
+                                                                <h4 className="mb-0">
                                                                     ${order.tax_fee}
                                                                     <span
                                                                         className=""
                                                                         style={{
-                                                                            fontSize: "0.875rem",
+                                                                            fontSize: "0.5rem",
                                                                         }}
                                                                     ></span>
-                                                                </h2>
+                                                                </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -173,17 +173,17 @@ function OrderDetail() {
                                                 >
                                                     <div className="card-body">
                                                         <div className="d-flex align-items-center">
-                                                            <div className="">
+                                                            <div className="p-2">
                                                                 <p className="mb-1">Service Fee</p>
-                                                                <h2 className="mb-0">
+                                                                <h4 className="mb-0">
                                                                     ${order.service_fee}
                                                                     <span
                                                                         className=""
                                                                         style={{
-                                                                            fontSize: "0.875rem",
+                                                                            fontSize: "0.5rem",
                                                                         }}
                                                                     ></span>
-                                                                </h2>
+                                                                </h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -196,17 +196,17 @@ function OrderDetail() {
                                                 >
                                                     <div className="card-body">
                                                         <div className="d-flex align-items-center">
-                                                            <div className="text-success">
+                                                            <div className="p-2">
                                                                 <p className="mb-1">Discount</p>
-                                                                <h2 className="mb-0">
-                                                                    - ${order.saved}
+                                                                <h4 className="mb-0 text-success">
+                                                                    ${order.saved}
                                                                     <span
                                                                         className=""
                                                                         style={{
-                                                                            fontSize: "0.875rem",
+                                                                            fontSize: "0.5rem",
                                                                         }}
                                                                     ></span>
-                                                                </h2>
+                                                                </h4>
                                                             </div>
                                                         </div>
                                                     </div>

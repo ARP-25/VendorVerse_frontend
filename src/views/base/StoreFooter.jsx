@@ -163,9 +163,14 @@ function StoreFooter() {
                 </div>
                 <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
                     © 2024 Copyright:
-                    <Link className="ms-1 text-dark" to="https://mdbootstrap.com/">
-                        angeloroccopucci.com
-                    </Link>
+                    <a
+                        className="ms-1 text-dark"
+                        href="https://angeloroccopucci.netlify.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        angeloroccopucci.netlify.app
+                    </a>
                 </div>
             </footer>
         </div>

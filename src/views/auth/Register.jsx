@@ -25,13 +25,7 @@ function Register() {
         setIsLoading(true);
 
         try {
-            const registerResponse = await register(
-                fullname,
-                email,
-                mobile,
-                password,
-                password2
-            );
+            const registerResponse = await register(fullname, email, mobile, password, password2);
             if (registerResponse.error) {
                 console.error("Registration error:", registerResponse.error);
                 alert(JSON.stringify(registerResponse.error));
@@ -56,10 +50,7 @@ function Register() {
 
     return (
         <>
-            <main
-                className=""
-                style={{ marginBottom: 100, marginTop: 50 }}
-            >
+            <main className="" style={{ marginBottom: 100, marginTop: 50 }}>
                 <div className="container">
                     {/* Section: Login form */}
                     <section className="">
@@ -67,9 +58,7 @@ function Register() {
                             <div className="col-xl-5 col-md-8">
                                 <div className="card rounded-5">
                                     <div className="card-body p-4">
-                                        <h3 className="text-center">
-                                            Register Account
-                                        </h3>
+                                        <h3 className="text-center">Register Account</h3>
                                         <br />
 
                                         <div className="tab-content">
@@ -94,10 +83,7 @@ function Register() {
                                                             required
                                                             className="form-control"
                                                             onChange={(e) =>
-                                                                setFullname(
-                                                                    e.target
-                                                                        .value
-                                                                )
+                                                                setFullname(e.target.value)
                                                             }
                                                         />
                                                     </div>
@@ -115,10 +101,7 @@ function Register() {
                                                             required
                                                             className="form-control"
                                                             onChange={(e) =>
-                                                                setEmail(
-                                                                    e.target
-                                                                        .value
-                                                                )
+                                                                setEmail(e.target.value)
                                                             }
                                                         />
                                                     </div>
@@ -137,10 +120,7 @@ function Register() {
                                                             required
                                                             className="form-control"
                                                             onChange={(e) =>
-                                                                setMobile(
-                                                                    e.target
-                                                                        .value
-                                                                )
+                                                                setMobile(e.target.value)
                                                             }
                                                         />
                                                     </div>
@@ -157,10 +137,7 @@ function Register() {
                                                             placeholder="Password"
                                                             className="form-control"
                                                             onChange={(e) =>
-                                                                setPassword(
-                                                                    e.target
-                                                                        .value
-                                                                )
+                                                                setPassword(e.target.value)
                                                             }
                                                         />
                                                     </div>
@@ -179,10 +156,7 @@ function Register() {
                                                             required
                                                             className="form-control"
                                                             onChange={(e) =>
-                                                                setPassword2(
-                                                                    e.target
-                                                                        .value
-                                                                )
+                                                                setPassword2(e.target.value)
                                                             }
                                                         />
                                                     </div>
@@ -198,9 +172,7 @@ function Register() {
                                                             type="submit"
                                                             disabled={isLoading}
                                                         >
-                                                            <span className="me-2">
-                                                                Processing
-                                                            </span>
+                                                            <span className="me-2">Processing</span>
                                                             <i className="fas fa-spinner fa-spin" />
                                                         </button>
                                                     ) : (
@@ -209,9 +181,7 @@ function Register() {
                                                             type="submit"
                                                             disabled={isLoading}
                                                         >
-                                                            <span className="me-2">
-                                                                Sign Up
-                                                            </span>
+                                                            <span className="me-2">Sign Up</span>
                                                             <i className="fas fa-user-plus" />
                                                         </button>
                                                     )}
@@ -220,11 +190,8 @@ function Register() {
 
                                                     <div className="text-center">
                                                         <p className="mt-4">
-                                                            Already have an
-                                                            account?{" "}
-                                                            <Link to="/login/">
-                                                                Login
-                                                            </Link>
+                                                            Already have an account?{" "}
+                                                            <Link to="/login/">Login</Link>
                                                         </p>
                                                     </div>
                                                 </form>
