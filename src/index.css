@@ -40,8 +40,8 @@ ul.nav li:hover {
   transition: ease-in-out 0.1s;
 }
 .card:hover {
-  box-shadow: 0 0 11px #17A2B8; 
-  transition: ease-in-out 0.1s;
+  /* box-shadow: 0 0 11px #17A2B8;  */
+  /* transition: ease-in-out 0.1s; */
 }
 .nav-item-2 {
   margin: 0 5px;
