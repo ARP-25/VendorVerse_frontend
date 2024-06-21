@@ -90,7 +90,7 @@ function Dashboard() {
             },
         ],
     };
-
+    console.log("Stats ===== ", stats);
     return (
         <div className="container-fluid" id="main">
             <div className="row row-offcanvas row-offcanvas-left h-100">
@@ -126,7 +126,7 @@ function Dashboard() {
                                         <i className="bi bi-people fa-5x" />
                                     </div>
                                     <h6 className="text-uppercase">Customers</h6>
-                                    <h1 className="display-1">125</h1>
+                                    <h1 className="display-1">{stats.orders}</h1>
                                 </div>
                             </div>
                         </div>
