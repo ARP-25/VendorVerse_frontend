@@ -82,7 +82,7 @@ function StoreHeader() {
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 {/* Logo */}
                                 <li>
-                                    <Link className="navbar-brand" to="/">
+                                    <Link className="navbar-brand" to="/shop">
                                         <i className="fas fa-home"></i>
                                     </Link>
                                 </li>
