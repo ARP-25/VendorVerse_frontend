@@ -24,16 +24,16 @@ function PaymentSuccess() {
         console.log("Deleting cart with ID:", cartID);
         apiInstance
             .delete(`cart-delete/${cartID}/`)
-            .then((response) => {
+            .then(response => {
                 console.log("Cart deleted:", response.data);
             })
-            .catch((error) => {
+            .catch(error => {
                 console.error("Failed to delete cart:", error);
             });
     }, []);
 
     useEffect(() => {
-        apiInstance.get(`checkout/${param?.order_oid}`).then((res) => {
+        apiInstance.get(`checkout/${param?.order_oid}`).then(res => {
             setOrder(res.data);
         });
     }, [param]);
@@ -50,7 +50,7 @@ function PaymentSuccess() {
 
             apiInstance
                 .post(`payment-success/${param?.order_oid}/`, formData)
-                .then((res) => {
+                .then(res => {
                     console.log("API response received:", res.data.message);
                     switch (res.data.message) {
                         case "Payment Successfull!":
@@ -70,7 +70,7 @@ function PaymentSuccess() {
                             setStatus("Unhandled payment status");
                     }
                 })
-                .catch((error) => {
+                .catch(error => {
                     if (error.response && error.response.data.message === "Already paid!") {
                         setStatus("Already paid");
                         console.log("Already paid!", status);
