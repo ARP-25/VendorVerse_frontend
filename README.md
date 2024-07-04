@@ -104,7 +104,13 @@ The Checkout Page ensures a smooth and secure final step for completing purchase
     -   **Stripe**: Redirects to the Stripe Checkout page, supporting card payments, Link, and Google Pay.
     -   **PayPal**: Redirects to the PayPal Checkout page for secure payment.
 
-## Technologies Used
+## 🚧 **Under Construction**
+
+This README is currently under construction. More details and sections will be added soon. Stay tuned!
+
+---
+
+<!-- ## Technologies Used
 
 ### Backend
 
@@ -127,4 +133,4 @@ The Checkout Page ensures a smooth and secure final step for completing purchase
 
 -   **Node.js** (v14 or later) for the frontend
 -   **Python** (v3.8 or later) for the backend
--   **PostgreSQL** (running locally or on a cloud service)
+-   **PostgreSQL** (running locally or on a cloud service) -->
