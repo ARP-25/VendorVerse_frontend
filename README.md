@@ -17,7 +17,6 @@ VendorVerse is a multivendor e-commerce platform designed to streamline supply c
     -   [Structure](#structure)
     -   [Dependencies](#dependencies)
 -   [Contributing](#contributing)
--   [License](#license)
 
 ## ✨ **Features**
 
@@ -104,13 +103,48 @@ The Checkout Page ensures a smooth and secure final step for completing purchase
     -   **Stripe**: Redirects to the Stripe Checkout page, supporting card payments, Link, and Google Pay.
     -   **PayPal**: Redirects to the PayPal Checkout page for secure payment.
 
-## 🚧 **Under Construction**
+### 🏆 Payment Success Page
 
-This README is currently under construction. More details and sections will be added soon. Stay tuned!
+The Payment Success Page provides users with real-time updates on their payment status and order details upon completing a purchase:
 
----
+-   **Real-Time Updates**: Users receive immediate feedback on the payment process, including the status of payment confirmation and order creation.
+-   **Payment Confirmation**: Users are notified once their payment has been successfully processed and confirmed.
+-   **Order Information**: A summary of the order, including itemized details and total amount paid, is displayed.
+-   **Download and Print Invoice**: Users can download and print a PDF of their order invoice for their records.
+-   **Order Status Signal**: Clear indicators signal to users that their payment has been completed successfully and the order has been created.
+-   **Automated HTML Confirmation Emails**: Both users and vendors receive automated HTML emails confirming the order and payment details.
+-   **Notifications**: Users and vendors receive notifications about the order status, which can be viewed in their respective dashboards (Vendor Dashboard and User Dashboard).
 
-<!-- ## Technologies Used
+This feature ensures that users have a smooth and transparent checkout experience, providing them with all the necessary information and confirmation for their purchase.
+
+### 📦 Footer
+
+The Footer provides essential information and quick links to help users navigate VendorVerse and stay connected:
+
+-   **Social Media**: Connect with us on various social networks.
+-   **About Us**: Discover what VendorVerse offers and our mission to connect diverse vendors and customers.
+-   **Useful Links**: Access important links like Privacy Policy, Job Offers, Cooperation, and more.
+-   **Product Categories**: Explore various categories such as Books, Clothing, Electronics, and more.
+-   **Support**: Find support through our Help Center, FAQ, and Community sections.
+
+This feature ensures that users can easily access important information and stay connected with VendorVerse through social media and useful links.
+
+## Installation
+
+### Prerequisites
+
+-   **Node.js** (v14 or later) for the frontend
+    -   Ensure you have npm (Node Package Manager) installed, which comes with Node.js.
+-   **Python** (v3.8 or later) for the backend
+    -   It's recommended to use a virtual environment to manage dependencies.
+-   **PostgreSQL** (running locally or on a cloud service)
+    -   Ensure you have created a database for the project and have the connection details (username, password, database name, host, and port).
+-   **pip** (Python package installer) to install backend dependencies
+-   **Git** to clone the repository and manage version control
+
+These prerequisites will ensure that you have the necessary tools to install and run the project dependencies.
+
+## Technologies Used
 
 ### Backend
 
@@ -119,6 +153,49 @@ This README is currently under construction. More details and sections will be a
 -   **Django REST Framework**: API framework
 -   **PostgreSQL**: Database
 -   **JWT**: JSON Web Tokens for authentication
+-   **Gunicorn**: WSGI HTTP Server for UNIX
+-   **Boto3**: Amazon Web Services SDK for Python
+-   **Psycopg2**: PostgreSQL database adapter for Python
+-   **Stripe**: Payment processing platform
+-   **Anymail**: Integrates with various email backends
+-   **Django Storages**: A collection of custom storage backends for Django
+
+### Additional Dependencies
+
+-   **asgiref**
+-   **black**
+-   **certifi**
+-   **charset-normalizer**
+-   **click**
+-   **colorama**
+-   **dj-database-url**
+-   **django-cors-headers**
+-   **django-jazzmin**
+-   **djangorestframework-simplejwt**
+-   **drf-yasg**
+-   **idna**
+-   **inflection**
+-   **jmespath**
+-   **mypy-extensions**
+-   **packaging**
+-   **pathspec**
+-   **platformdirs**
+-   **python-dateutil**
+-   **python-dotenv**
+-   **pytz**
+-   **PyYAML**
+-   **requests**
+-   **s3transfer**
+-   **setuptools**
+-   **shortuuid**
+-   **six**
+-   **sqlparse**
+-   **typing_extensions**
+-   **tzdata**
+-   **uritemplate**
+-   **urllib3**
+
+This section now provides a comprehensive overview of the key technologies and additional dependencies used in the project.
 
 ### Frontend
 
@@ -127,10 +204,35 @@ This README is currently under construction. More details and sections will be a
 -   **Zustand**: State management
 -   **Axios**: HTTP client for API requests
 
-## Installation
+### Additional Dependencies
 
-### Prerequisites
+-   **@ckeditor/ckeditor5-build-classic**: Rich text editor
+-   **@ckeditor/ckeditor5-react**: React integration for CKEditor
+-   **@paypal/react-paypal-js**: PayPal integration for React
+-   **chart.js**: JavaScript charting library
+-   **dayjs**: Date and time library
+-   **framer-motion**: Animation library for React
+-   **html2pdf.js**: Client-side PDF generation
+-   **js-cookie**: Handling cookies in JavaScript
+-   **jwt-decode**: Decode JSON Web Tokens
+-   **moment**: Date and time manipulation library
+-   **react-chartjs-2**: React wrapper for Chart.js
+-   **react-hook-form**: Form handling in React
+-   **react-icons**: Icons for React
+-   **react-photo-album**: Photo gallery for React
+-   **react-router-dom**: Routing library for React
+-   **sweetalert2**: Beautiful, responsive, customizable, and accessible replacement for JavaScript's popup boxes
+-   **yet-another-react-lightbox**: Lightbox component for React
 
--   **Node.js** (v14 or later) for the frontend
--   **Python** (v3.8 or later) for the backend
--   **PostgreSQL** (running locally or on a cloud service) -->
+### Development Dependencies
+
+-   **@types/react**: TypeScript definitions for React
+-   **@types/react-dom**: TypeScript definitions for React DOM
+-   **@vitejs/plugin-react**: Official Vite plugin for React
+-   **eslint**: Pluggable JavaScript linter
+-   **eslint-plugin-react**: React specific linting rules for ESLint
+-   **eslint-plugin-react-hooks**: ESLint rules for React hooks
+-   **eslint-plugin-react-refresh**: ESLint plugin for React Fast Refresh
+-   **prettier**: Code formatter
+-   **simple-zustand-devtools**: Devtools for Zustand state management
+-   **vite-plugin-static-copy**: Plugin for copying static files in Vite
